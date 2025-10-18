@@ -14,7 +14,7 @@ public class Main {
         for(int i = 0; i < num_threads; i++) {
             r = random.nextInt(100);
 
-            Thread thread = new Thread(new SomaRunnable(r, sem), "Thread " + i);
+            Thread thread = new Thread(new SumRunnable(r, sem), "Thread " + i);
             threads[i] = thread;
             thread.start();
         }
@@ -27,10 +27,10 @@ public class Main {
             }
         }
 
-        System.out.println("O valor final de X é: " + x);
+        System.out.println("The final value of X is: " + x);
     }
 
-    public static void incrementaX(int valor) {
-        x += valor;
+    public static void incrementX(int value) {
+        x += value;
     }
 }
