@@ -15,7 +15,7 @@ public class SomaRunnable implements Runnable {
         try {
             System.out.println(Thread.currentThread().getName() + " vai dormir por " + this.X + " ms.");
             Thread.sleep(this.X);
-            System.out.println(Thread.currentThread().getName() + "  Acordou!");
+            System.out.println(Thread.currentThread().getName() + " acordou!");
             this.somaX();
         } catch (InterruptedException e) {
             e.printStackTrace();

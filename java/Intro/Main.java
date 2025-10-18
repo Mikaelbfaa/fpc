@@ -7,18 +7,24 @@ public class Main {
 
     public static void main(String[] args) {
         Random random = new Random();
+        int num_threads = random.nextInt(2,6);
+        Thread[] threads = new Thread[num_threads];
+        int r;
 
-        Thread thread1 = new Thread(new SomaRunnable(random.nextInt(100), sem), "Thread 1");
-        Thread thread2 = new Thread(new SomaRunnable(random.nextInt(100), sem), "Thread 2");
+        for(int i = 0; i < num_threads; i++) {
+            r = random.nextInt(100);
 
-        thread1.start();
-        thread2.start();
+            Thread thread = new Thread(new SomaRunnable(r, sem), "Thread " + i);
+            threads[i] = thread;
+            thread.start();
+        }
 
-        try {
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for(int i = 0; i < num_threads; i++) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         System.out.println("O valor final de X é: " + x);
