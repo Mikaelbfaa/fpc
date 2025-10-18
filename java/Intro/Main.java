@@ -9,12 +9,9 @@ public class Main {
         Random random = new Random();
         int num_threads = random.nextInt(2,6);
         Thread[] threads = new Thread[num_threads];
-        int r;
 
         for(int i = 0; i < num_threads; i++) {
-            r = random.nextInt(100);
-
-            Thread thread = new Thread(new SumRunnable(r, sem), "Thread " + i);
+            Thread thread = new Thread(new SumRunnable(random.nextInt(100), sem), "Thread " + i);
             threads[i] = thread;
             thread.start();
         }
