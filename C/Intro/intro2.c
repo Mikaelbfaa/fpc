@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <unistd.h>
 
 #define NUM_THREADS 4
 
@@ -16,12 +17,16 @@ typedef struct {
 void* increment(void* arg) {
     thread_args_t* thread_args = (thread_args_t*) arg;
     int value = thread_args->value;
+    int thread_id = thread_args->thread_id;
+    printf("Thread %d sleeping for %d seconds\n", thread_id, value);
+    sleep(value);
+    printf("Thread %d woke up!\n", thread_id);
 
     pthread_mutex_lock(&lock);
     sum_total += value;
-    printf("Thread %d added a total of %d\n", thread_args->thread_id, value);
+    printf("Thread %d added a total of %d\n", thread_id, value);
     pthread_mutex_unlock(&lock);
-    printf("Thread %d is freeing memory\n", thread_args->thread_id);
+    printf("Thread %d is freeing memory\n", thread_id);
     free(thread_args);
 
     return NULL;
