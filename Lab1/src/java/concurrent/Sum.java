@@ -50,7 +50,7 @@ public class Sum {
 
 	//many exceptions could be thrown here. we don't care
         for (String path : args) {
-            Thread thread = new SumThread(path);
+            Thread thread = new Thread(new RunnableSum(path), "Thread of path " + path);
             thread.start();
             threads.add(thread);
         }
@@ -60,23 +60,5 @@ public class Sum {
         }
         
         System.out.println("Total: " + total);
-    }
-
-    static class SumThread extends Thread {
-        private String path;
-
-        public SumThread(String path) {
-            this.path = path;
-        }
-
-        @Override
-        public void run() {
-            try {
-                Sum.sum(path);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
     }
 }

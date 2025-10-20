@@ -50,6 +50,6 @@ int main(int argc, char const *argv[])
     }
 
     printf("The total sum was: %d\n", sum_total);
-    
+
     return 0;
 }

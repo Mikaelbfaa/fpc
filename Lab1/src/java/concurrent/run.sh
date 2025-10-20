@@ -8,11 +8,8 @@ if [ "$#" -lt 1 ]; then
   exit 1
 fi
 
-# Cria o diretório bin se não existir
-mkdir -p $BASE_DIR/bin
-
-# Compila o código direcionando a saída para a pasta bin
-javac -d $BASE_DIR/bin $BASE_DIR/Sum.java
+## Compila o código direcionando a saída para a pasta bin
+#javac -d $BASE_DIR/bin $BASE_DIR/Sum.java
 
 # chama o programa java com os arg passados para o script bash
 java -cp $BASE_DIR/bin/ Sum "$@"

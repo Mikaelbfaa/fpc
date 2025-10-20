@@ -9,6 +9,9 @@ echo "Executanto o código python concurrent"
 time bash src/python/concurrent/run.sh $args
 
 echo "--------------------------------------------------------------"
+echo "Compilando o código Java"
+bash src/java/serial/build.sh
+bash src/java/concurrent/build.sh
 
 echo "Executanto o código Java serial"
 time bash src/java/serial/run.sh $args

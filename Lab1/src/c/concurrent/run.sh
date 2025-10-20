@@ -8,4 +8,4 @@ if [ "$#" -lt 1 ]; then
 fi
 
 # chama o programa c com os arg passados para o script bash
-"$BASE_DIR"/sum.exe "$@"
+"$BASE_DIR"/sum "$@"
